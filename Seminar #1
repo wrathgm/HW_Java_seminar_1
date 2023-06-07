@@ -1,0 +1,97 @@
+// Задача 1. Вычислить n-ое треугольного число (сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Введите число n: ");
+            int n = scanner.nextInt();
+
+            int triangularNumber = n * (n + 1) / 2;
+            System.out.println("n-ое треугольное число: " + triangularNumber);
+
+            int factorial = 1;
+            for (int i = 1; i <= n; i++) {
+                factorial *= i;
+            }
+            System.out.println("n-факториал: " + factorial);
+        }
+    }
+}
+
+// Задача 2. Вывести все простые числа от 1 до 1000
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Простые числа от 1 до 1000:");
+        for (int number = 2; number <= 1000; number++) {
+            if (isPrime(number)) {
+                System.out.println(number);
+            }
+        }
+    }
+
+    public static boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+// Задача 3. Реализовать простой калькулятор
+
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Введите первое число: ");
+            double firstNumber = scanner.nextDouble();
+
+            System.out.print("Введите знак (+, -, *, /): ");
+            String operator = scanner.next();
+
+            System.out.print("Введите второе число: ");
+            double secondNumber = scanner.nextDouble();
+
+            double result;
+
+            switch (operator) {
+                case "+":
+                    result = firstNumber + secondNumber;
+                    System.out.println("Результат: " + result);
+                    break;
+
+                case "-":
+                    result = firstNumber - secondNumber;
+                    System.out.println("Результат: " + result);
+                    break;
+
+                case "*":
+                    result = firstNumber * secondNumber;
+                    System.out.println("Результат: " + result);
+                    break;
+
+                case "/":
+                    if (secondNumber != 0) {
+                        result = firstNumber / secondNumber;
+                        System.out.println("Результат: " + result);
+                    } else {
+                        System.out.println("Ошибка: деление на ноль.");
+                    }
+                    break;
+
+                default:
+                    System.out.println("Ошибка: некорректный знак операции.");
+                    break;
+            }
+        }
+    }
+}
+
